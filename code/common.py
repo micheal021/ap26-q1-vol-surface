@@ -28,8 +28,20 @@ def load_market_data(data_dir: Path | None = None) -> pd.DataFrame:
     rates = rates.sort_values("date")
     frame = pd.merge_asof(options, underlying, on="date", direction="backward")
     frame = pd.merge_asof(frame.sort_values("date"), rates, on="date", direction="backward")
-    frame["rate"] = frame["shibor_3m_percent"].fillna(frame["shibor_3m_percent"].median()) / 100.0
-    frame["tau"] = (frame["expiry"] - frame["date"]).dt.days / 365.25
+    maturity_days = (frame["expiry"] - frame["date"]).dt.days
+    frame["tau"] = maturity_days / 365.25
+    curve = sorted((int(name.split("_")[1][:-1]), name) for name in rates if name.startswith("shibor_") and name.endswith("d_percent"))
+    if curve:
+        tenor_days, columns = zip(*curve)
+        if frame[list(columns)].isna().any().any():
+            raise ValueError("A quote is missing a complete contemporaneous SHIBOR curve")
+        frame["rate"] = [
+            np.interp(days, tenor_days, values) / 100.0
+            for days, values in zip(maturity_days, frame[list(columns)].to_numpy())
+        ]
+    else:
+        # The original committed snapshot remains readable for reproduction.
+        frame["rate"] = frame["shibor_3m_percent"] / 100.0
     frame["forward"] = frame["spot"] * np.exp(frame["rate"] * frame["tau"])
     frame["discount"] = np.exp(-frame["rate"] * frame["tau"])
     frame["log_moneyness"] = np.log(frame["strike"] / frame["forward"])
@@ -112,17 +124,35 @@ def butterfly_g(k, parameters):
     return (1 - k * slope / (2 * variance)) ** 2 - slope**2 / 4 * (1 / variance + 0.25)
 
 
+def svi_initial(k: np.ndarray, total_variance: np.ndarray) -> np.ndarray:
+    return np.array([max(float(np.percentile(total_variance, 10)), 1e-5), 0.2, 0.0, float(np.median(k)), 0.1])
+
+
+def scipy_svi(k: np.ndarray, total_variance: np.ndarray, initial: np.ndarray) -> tuple:
+    lower = np.array([0.0, 0.0, -0.999, -3.0, 1e-4])
+    upper = np.array([5.0, 10.0, 0.999, 3.0, 5.0])
+    history = []
+
+    def residual(parameters):
+        values = svi_value(k, parameters) - total_variance
+        history.append(float(np.mean(values**2)))
+        return values
+
+    fit = least_squares(residual, initial, bounds=(lower, upper), max_nfev=3000, xtol=1e-12, ftol=1e-12, gtol=1e-12)
+    return fit, lower, upper, history
+
+
 def fit_svi(k: np.ndarray, total_variance: np.ndarray, butterfly_penalty: float = 0.0) -> dict:
     k = np.asarray(k, dtype=float)
     total_variance = np.asarray(total_variance, dtype=float)
-    initial = np.array([max(float(np.percentile(total_variance, 10)), 1e-5), 0.2, 0.0, float(np.median(k)), 0.1])
-    lower = np.array([0.0, 0.0, -0.999, -3.0, 1e-4])
-    upper = np.array([5.0, 10.0, 0.999, 3.0, 5.0])
+    initial = svi_initial(k, total_variance)
     started = time.perf_counter()
     penalty_grid = np.linspace(-0.4, 0.4, 81)
+
     def objective(parameters):
         return float(np.mean((svi_value(k, parameters) - total_variance) ** 2))
-    unconstrained = least_squares(lambda parameters: svi_value(k, parameters) - total_variance, initial, bounds=(lower, upper), max_nfev=3000, xtol=1e-12, ftol=1e-12, gtol=1e-12)
+
+    unconstrained, lower, upper, _ = scipy_svi(k, total_variance, initial)
     constrained = minimize(objective, unconstrained.x, method="SLSQP", bounds=list(zip(lower, upper)), constraints={"type": "ineq", "fun": lambda parameters: butterfly_g(penalty_grid, parameters)}, options={"maxiter": 1000, "ftol": 1e-12})
     result_parameters = constrained.x if constrained.success else unconstrained.x
     return {
