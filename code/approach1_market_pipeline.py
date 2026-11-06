@@ -52,6 +52,8 @@ def fit_diagnostics(frame, fits, grid: np.ndarray) -> tuple[dict, dict]:
             "parameters": parameters,
             "objective": fitted["objective"],
             "iterations": fitted["iterations"],
+            "constraint_success": fitted["success"],
+            "solver_message": fitted["message"],
             "fit_seconds": fitted["fit_seconds"],
             "butterfly_min_g": float(np.min(butterfly_values)),
             "butterfly_violations": int(np.sum(butterfly_values < -1e-8)),
@@ -92,6 +94,7 @@ def fit_diagnostics(frame, fits, grid: np.ndarray) -> tuple[dict, dict]:
         calendar_details[date_text] = {"calendar_violations": date_calendar, "negative_forward_variance": date_forward, "locations": locations}
     summary = {
         "fit_count": len(per_group),
+        "constrained_fit_failures": sum(not item["constraint_success"] for item in per_group.values()),
         "butterfly_violations": int(sum(item["butterfly_violations"] for item in per_group.values())),
         "calendar_violations": calendar_violations,
         "negative_forward_variance": negative_forward_variance,

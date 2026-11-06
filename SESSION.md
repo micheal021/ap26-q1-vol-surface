@@ -76,3 +76,15 @@ The revision was made in a Codex session on the local branch `fix/assignment-com
 - Checked the prior snapshot and reused the verified multi-tenor SHIBOR snapshot from Q2 with provenance in `data/clean/metadata.json`.
 - Retrieved CFFEX historical daily XML for the shared calendar block and checked trading dates, matched calls and puts, and common expiries.
 - Updated the comparison between SciPy and Torch SVI and reran both approaches and the comparison against the revised offline data.
+
+### Revision commands
+
+The following invocations are shown relative to the project root. `python` denotes the installed Anaconda interpreter used for the local runs. The stochastic runs used the default seed, 42.
+
+```text
+python data/fetch.py --augment-calendar
+python data/fetch.py
+python code/approach1_market_pipeline.py
+python code/approach2_differentiable.py
+python code/compare.py
+```

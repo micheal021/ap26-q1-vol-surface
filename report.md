@@ -70,6 +70,7 @@ Calendar checks compare fitted total variance at the same `k` for increasing exp
 | Filtered quotes | 1496 |
 | Successful IV quotes | 1471 |
 | SVI groups | 86 |
+| Constrained SVI failures (bounded least-squares fallback) | 0 |
 | IV divergence cases | 25 |
 | Matched parity pairs | 454 |
 | Butterfly violations | 0 |
