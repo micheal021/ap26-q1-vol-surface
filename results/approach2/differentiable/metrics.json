@@ -9,212 +9,1739 @@
         0.0
       ],
       [
-        1.0,
+        100000000.0,
         0.0
       ],
       [
         0.0,
-        1.0
+        100000000.0
       ],
       [
-        1.0,
-        1.0
+        100000000.0,
+        100000000.0
       ]
     ]
   },
   "metrics": {
-    "filtered_quotes": 225,
-    "iv_quotes": 224,
-    "iv_divergence_count": 1,
-    "torch_svi_groups": 12,
+    "filtered_quotes": 1496,
+    "iv_quotes": 1471,
+    "iv_divergence_count": 25,
+    "torch_svi_groups": 86,
     "convergence": [
       {
         "group": "2023-07-28|2023-10-20",
-        "scipy_objective": 6.904741185072448e-09,
-        "torch_objective": 6.907767247099628e-09,
-        "scipy_seconds": 0.023517375000665197,
-        "torch_seconds": 0.0592276250008581,
-        "scipy_iterations": 1,
-        "torch_epochs": 300
+        "initial_parameters": [
+          0.005346648632192467,
+          0.2,
+          0.0,
+          0.03381459908864465,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 6.942389659589622e-09,
+        "torch_objective": 3.47918700072114e-07,
+        "scipy_seconds": 0.06763019999999997,
+        "torch_seconds": 0.15891570000000144,
+        "scipy_iterations": 175,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 38,
+        "torch_updates_to_target": null
       },
       {
         "group": "2023-10-23|2023-11-17",
-        "scipy_objective": 6.625246201694245e-10,
-        "torch_objective": 6.628230742045105e-10,
-        "scipy_seconds": 0.007778707999023027,
-        "torch_seconds": 0.03608679100034351,
-        "scipy_iterations": 1,
-        "torch_epochs": 300
+        "initial_parameters": [
+          0.0026018197067949503,
+          0.2,
+          0.0,
+          -0.0013078649823116259,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 1.3329544162637624e-08,
+        "torch_objective": 1.1461884241725784e-07,
+        "scipy_seconds": 0.01923780000000086,
+        "torch_seconds": 0.16064659999999975,
+        "scipy_iterations": 47,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 31,
+        "torch_updates_to_target": null
       },
       {
         "group": "2023-10-23|2023-12-15",
-        "scipy_objective": 2.8710408957730888e-09,
-        "torch_objective": 2.871032744877766e-09,
-        "scipy_seconds": 0.004596916000082274,
-        "torch_seconds": 0.03552329199919768,
-        "scipy_iterations": 1,
-        "torch_epochs": 300
+        "initial_parameters": [
+          0.005117743816386204,
+          0.2,
+          0.0,
+          -0.003123381120967067,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 7.084079731442554e-08,
+        "torch_objective": 4.960384671903739e-07,
+        "scipy_seconds": 0.09419229999999956,
+        "torch_seconds": 0.15992220000000046,
+        "scipy_iterations": 312,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 31,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-10-23|2024-01-19",
+        "initial_parameters": [
+          0.007896498957351979,
+          0.2,
+          0.0,
+          0.0017366331880542137,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 1.7950140458268224e-08,
+        "torch_objective": 2.3750791910970293e-07,
+        "scipy_seconds": 0.03099160000000012,
+        "torch_seconds": 0.19105279999999958,
+        "scipy_iterations": 86,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 33,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-10-23|2024-03-15",
+        "initial_parameters": [
+          0.0122408747402491,
+          0.2,
+          0.0,
+          -0.002055626151667932,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 4.907454167313499e-08,
+        "torch_objective": 1.00521697277145e-06,
+        "scipy_seconds": 0.021241400000000965,
+        "torch_seconds": 0.16530490000000064,
+        "scipy_iterations": 67,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 31,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-10-23|2024-06-21",
+        "initial_parameters": [
+          0.020744320900150624,
+          0.2,
+          0.0,
+          -0.03784906752985855,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 7.199732976922454e-07,
+        "torch_objective": 1.1155876791235642e-06,
+        "scipy_seconds": 0.011926199999999554,
+        "torch_seconds": 0.15946650000000062,
+        "scipy_iterations": 40,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": null,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-10-23|2024-09-20",
+        "initial_parameters": [
+          0.025367064088945533,
+          0.2,
+          0.0,
+          -0.001234814135534103,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 6.636865152801535e-06,
+        "torch_objective": 7.235881639644504e-06,
+        "scipy_seconds": 0.009156700000000129,
+        "torch_seconds": 0.1567544999999999,
+        "scipy_iterations": 28,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": null,
+        "torch_updates_to_target": null
       },
       {
         "group": "2023-10-24|2023-11-17",
-        "scipy_objective": 1.6200519126712522e-09,
-        "torch_objective": 1.6202762465056253e-09,
-        "scipy_seconds": 0.007623625000633183,
-        "torch_seconds": 0.03562529200098652,
-        "scipy_iterations": 1,
-        "torch_epochs": 300
+        "initial_parameters": [
+          0.00227617838594282,
+          0.2,
+          0.0,
+          -0.004941306026464974,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 1.6519226732156033e-09,
+        "torch_objective": 7.635321708221454e-08,
+        "scipy_seconds": 0.0182493000000008,
+        "torch_seconds": 0.15837589999999935,
+        "scipy_iterations": 51,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 31,
+        "torch_updates_to_target": 242
       },
       {
         "group": "2023-10-24|2023-12-15",
-        "scipy_objective": 9.861196283537308e-11,
-        "torch_objective": 9.86126735824655e-11,
-        "scipy_seconds": 0.00826841599882755,
-        "torch_seconds": 0.0346942920004949,
-        "scipy_iterations": 1,
-        "torch_epochs": 300
+        "initial_parameters": [
+          0.004531196199043239,
+          0.2,
+          0.0,
+          -0.006777729672116912,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 8.924783046113442e-09,
+        "torch_objective": 3.31908921680224e-07,
+        "scipy_seconds": 0.01846369999999986,
+        "torch_seconds": 0.16474879999999992,
+        "scipy_iterations": 48,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 31,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-10-24|2024-03-15",
+        "initial_parameters": [
+          0.011050586564788457,
+          0.2,
+          0.0,
+          -0.005739230317884319,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 8.907092364065223e-08,
+        "torch_objective": 8.167299370143155e-07,
+        "scipy_seconds": 0.12896830000000037,
+        "torch_seconds": 0.16214759999999906,
+        "scipy_iterations": 415,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 37,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-10-24|2024-06-21",
+        "initial_parameters": [
+          0.01667327598739733,
+          0.2,
+          0.0,
+          -0.012553795448971406,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 4.723783891852019e-07,
+        "torch_objective": 6.136205570328457e-07,
+        "scipy_seconds": 0.007714299999999952,
+        "torch_seconds": 0.16344139999999996,
+        "scipy_iterations": 21,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": null,
+        "torch_updates_to_target": null
       },
       {
         "group": "2023-10-25|2023-11-17",
-        "scipy_objective": 5.850185337120491e-09,
-        "torch_objective": 5.850188333766937e-09,
-        "scipy_seconds": 0.00770945899967046,
-        "torch_seconds": 0.03515762499955599,
-        "scipy_iterations": 1,
-        "torch_epochs": 300
+        "initial_parameters": [
+          0.0017059061510668408,
+          0.2,
+          0.0,
+          0.004440227970747036,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 9.032880365246551e-09,
+        "torch_objective": 7.292640447076337e-08,
+        "scipy_seconds": 0.025952200000000758,
+        "torch_seconds": 0.16121119999999856,
+        "scipy_iterations": 70,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 31,
+        "torch_updates_to_target": 262
       },
       {
         "group": "2023-10-25|2023-12-15",
-        "scipy_objective": 7.659159530843386e-10,
-        "torch_objective": 7.660759249183968e-10,
-        "scipy_seconds": 0.006191792001118301,
-        "torch_seconds": 0.035731207999560866,
-        "scipy_iterations": 1,
-        "torch_epochs": 300
+        "initial_parameters": [
+          0.003965892852543755,
+          0.2,
+          0.0,
+          0.002601551239499248,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 2.6986808233594906e-09,
+        "torch_objective": 2.6226149429930956e-07,
+        "scipy_seconds": 0.021773900000001234,
+        "torch_seconds": 0.16016220000000025,
+        "scipy_iterations": 70,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 31,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-10-25|2024-03-15",
+        "initial_parameters": [
+          0.010365115330039278,
+          0.2,
+          0.0,
+          -0.025170793153173717,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 6.752967645559849e-09,
+        "torch_objective": 4.902041723653383e-07,
+        "scipy_seconds": 0.014092400000000893,
+        "torch_seconds": 0.16132059999999981,
+        "scipy_iterations": 44,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 25,
+        "torch_updates_to_target": null
       },
       {
         "group": "2023-10-26|2023-11-17",
-        "scipy_objective": 5.198818602926652e-09,
-        "torch_objective": 5.1988946481174025e-09,
-        "scipy_seconds": 0.011003624998920714,
-        "torch_seconds": 0.03512841600058891,
-        "scipy_iterations": 1,
-        "torch_epochs": 300
+        "initial_parameters": [
+          0.0015203555047767629,
+          0.2,
+          0.0,
+          0.0017956419297238155,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 9.125653537173734e-09,
+        "torch_objective": 4.8148219633503686e-08,
+        "scipy_seconds": 0.020642699999999792,
+        "torch_seconds": 0.16746939999999988,
+        "scipy_iterations": 51,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 31,
+        "torch_updates_to_target": 253
       },
       {
         "group": "2023-10-26|2023-12-15",
-        "scipy_objective": 3.575493625534331e-10,
-        "torch_objective": 3.575865992200278e-10,
-        "scipy_seconds": 0.010121417000846122,
-        "torch_seconds": 0.03489541599992663,
-        "scipy_iterations": 1,
-        "torch_epochs": 300
+        "initial_parameters": [
+          0.003636508121666377,
+          0.2,
+          0.0,
+          -0.00010044624795338452,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 1.4395700125069364e-08,
+        "torch_objective": 2.4102260454128555e-07,
+        "scipy_seconds": 0.025788699999999665,
+        "torch_seconds": 0.17527529999999913,
+        "scipy_iterations": 65,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 31,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-10-26|2024-03-15",
+        "initial_parameters": [
+          0.009840568620780563,
+          0.2,
+          0.0,
+          0.042174534590667306,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 9.193722460253054e-09,
+        "torch_objective": 6.774719736313273e-07,
+        "scipy_seconds": 0.032934399999998476,
+        "torch_seconds": 0.16310299999999955,
+        "scipy_iterations": 105,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 31,
+        "torch_updates_to_target": null
       },
       {
         "group": "2023-10-27|2023-11-17",
-        "scipy_objective": 3.977730448414928e-09,
-        "torch_objective": 3.977753681994045e-09,
-        "scipy_seconds": 0.006061209000108647,
-        "torch_seconds": 0.03537362499992014,
-        "scipy_iterations": 1,
-        "torch_epochs": 300
+        "initial_parameters": [
+          0.0012195335448744083,
+          0.2,
+          0.0,
+          0.002320633578603342,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 7.04591836732956e-09,
+        "torch_objective": 6.411016073570863e-08,
+        "scipy_seconds": 0.018314200000000724,
+        "torch_seconds": 0.1598158999999999,
+        "scipy_iterations": 57,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 31,
+        "torch_updates_to_target": 268
       },
       {
         "group": "2023-10-27|2023-12-15",
-        "scipy_objective": 7.773422828048042e-09,
-        "torch_objective": 7.774000998495012e-09,
-        "scipy_seconds": 0.0075667500004783506,
-        "torch_seconds": 0.035757875000854256,
-        "scipy_iterations": 1,
-        "torch_epochs": 300
+        "initial_parameters": [
+          0.003201776083979459,
+          0.2,
+          0.0,
+          0.00041216856648701016,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 1.5829942790766032e-08,
+        "torch_objective": 1.710948396294043e-07,
+        "scipy_seconds": 0.013772600000001134,
+        "torch_seconds": 0.1632686999999997,
+        "scipy_iterations": 46,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 31,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-10-27|2024-01-19",
+        "initial_parameters": [
+          0.0045898060646407685,
+          0.2,
+          0.0,
+          -0.03753893230875156,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 4.602440418992419e-07,
+        "torch_objective": 1.2932778190588579e-06,
+        "scipy_seconds": 0.013866600000000062,
+        "torch_seconds": 0.1655628999999994,
+        "scipy_iterations": 51,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": null,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-10-27|2024-03-15",
+        "initial_parameters": [
+          0.008805770805044848,
+          0.2,
+          0.0,
+          0.0011885281758511424,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 1.6361146241362157e-07,
+        "torch_objective": 1.0402709449408576e-06,
+        "scipy_seconds": 0.010702000000000211,
+        "torch_seconds": 0.16572039999999966,
+        "scipy_iterations": 36,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": null,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-10-27|2024-06-21",
+        "initial_parameters": [
+          0.014754012302346695,
+          0.2,
+          0.0,
+          -0.005622091048545223,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 1.23835129003593e-07,
+        "torch_objective": 2.793928786104516e-07,
+        "scipy_seconds": 0.010189000000000448,
+        "torch_seconds": 0.16091439999999935,
+        "scipy_iterations": 30,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": null,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-10-30|2023-11-17",
+        "initial_parameters": [
+          0.001103907258855527,
+          0.2,
+          0.0,
+          -0.003476871724450063,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 7.1521124403313005e-09,
+        "torch_objective": 8.208925095232189e-08,
+        "scipy_seconds": 0.015110700000001032,
+        "torch_seconds": 0.15880649999999896,
+        "scipy_iterations": 45,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 31,
+        "torch_updates_to_target": 284
+      },
+      {
+        "group": "2023-10-30|2023-12-15",
+        "initial_parameters": [
+          0.003031674916946294,
+          0.2,
+          0.0,
+          0.0016132496912411535,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 2.50797668382545e-08,
+        "torch_objective": 1.699103506780375e-07,
+        "scipy_seconds": 0.013125499999999235,
+        "torch_seconds": 0.15919470000000047,
+        "scipy_iterations": 40,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 31,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-10-30|2024-03-15",
+        "initial_parameters": [
+          0.008249563293688655,
+          0.2,
+          0.0,
+          -0.004620352290309808,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 1.638113614192698e-07,
+        "torch_objective": 6.029030146237346e-07,
+        "scipy_seconds": 0.031227499999999964,
+        "torch_seconds": 0.162298100000001,
+        "scipy_iterations": 96,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": null,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-10-31|2023-11-17",
+        "initial_parameters": [
+          0.0010273768477367686,
+          0.2,
+          0.0,
+          -0.0002741144595530356,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 4.417332898199221e-09,
+        "torch_objective": 9.464290684491061e-08,
+        "scipy_seconds": 0.014419000000000182,
+        "torch_seconds": 0.1606790999999994,
+        "scipy_iterations": 38,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 31,
+        "torch_updates_to_target": 297
+      },
+      {
+        "group": "2023-10-31|2023-12-15",
+        "initial_parameters": [
+          0.0030591227502867954,
+          0.2,
+          0.0,
+          -0.0021653713133694503,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 1.9094817763060484e-08,
+        "torch_objective": 1.9588084398947103e-07,
+        "scipy_seconds": 0.01195769999999996,
+        "torch_seconds": 0.1587309999999995,
+        "scipy_iterations": 30,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 31,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-10-31|2024-03-15",
+        "initial_parameters": [
+          0.008904069249555219,
+          0.2,
+          0.0,
+          -0.0014361387720201442,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 5.926858964587251e-08,
+        "torch_objective": 7.972487878760148e-07,
+        "scipy_seconds": 0.07103329999999985,
+        "torch_seconds": 0.15686309999999892,
+        "scipy_iterations": 243,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 70,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-11-01|2023-11-17",
+        "initial_parameters": [
+          0.0009456183088478939,
+          0.2,
+          0.0,
+          0.00019596013506546512,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 6.03239838160535e-09,
+        "torch_objective": 1.0698438757117401e-07,
+        "scipy_seconds": 0.013815300000000974,
+        "torch_seconds": 0.1621775000000003,
+        "scipy_iterations": 36,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 31,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-11-01|2023-12-15",
+        "initial_parameters": [
+          0.0029336938056456737,
+          0.2,
+          0.0,
+          -0.0016841776860834702,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 8.210538002089159e-09,
+        "torch_objective": 1.7128847673575365e-07,
+        "scipy_seconds": 0.018862600000000285,
+        "torch_seconds": 0.1656987000000001,
+        "scipy_iterations": 60,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 31,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-11-01|2024-03-15",
+        "initial_parameters": [
+          0.008581399632751232,
+          0.2,
+          0.0,
+          0.012724620970177599,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 3.879829804700229e-09,
+        "torch_objective": 4.299633076243481e-07,
+        "scipy_seconds": 0.5068280000000005,
+        "torch_seconds": 0.16218230000000133,
+        "scipy_iterations": 1685,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 25,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-11-02|2023-11-17",
+        "initial_parameters": [
+          0.0007790133926079687,
+          0.2,
+          0.0,
+          0.005048002011556886,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 1.1343175793993776e-08,
+        "torch_objective": 1.3648168817326223e-07,
+        "scipy_seconds": 0.01650309999999955,
+        "torch_seconds": 0.1695429999999991,
+        "scipy_iterations": 53,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 31,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-11-02|2023-12-15",
+        "initial_parameters": [
+          0.0027004434305353143,
+          0.2,
+          0.0,
+          0.0031096719380303076,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 7.366053612825453e-09,
+        "torch_objective": 1.4741354448233324e-07,
+        "scipy_seconds": 0.020939799999998954,
+        "torch_seconds": 0.16146740000000115,
+        "scipy_iterations": 58,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 31,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-11-02|2024-03-15",
+        "initial_parameters": [
+          0.008877919813599195,
+          0.2,
+          0.0,
+          0.031203316272942663,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 4.466038295180282e-09,
+        "torch_objective": 5.253592689768993e-07,
+        "scipy_seconds": 0.04803229999999914,
+        "torch_seconds": 0.15824809999999978,
+        "scipy_iterations": 139,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 31,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-11-03|2023-11-17",
+        "initial_parameters": [
+          0.0007196137189300029,
+          0.2,
+          0.0,
+          -0.0033065442868528703,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 8.83543980095322e-08,
+        "torch_objective": 2.5531227265673806e-07,
+        "scipy_seconds": 0.012150899999999965,
+        "torch_seconds": 0.1548563000000005,
+        "scipy_iterations": 42,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 74,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-11-03|2023-12-15",
+        "initial_parameters": [
+          0.002535175871207404,
+          0.2,
+          0.0,
+          0.00868507903711601,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 2.5849099387213784e-08,
+        "torch_objective": 1.2673699245624448e-07,
+        "scipy_seconds": 0.00909419999999983,
+        "torch_seconds": 0.15745870000000117,
+        "scipy_iterations": 31,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 31,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-11-03|2024-03-15",
+        "initial_parameters": [
+          0.008844405104666548,
+          0.2,
+          0.0,
+          0.022864401100234025,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 1.1278480911164686e-08,
+        "torch_objective": 3.689917207339022e-07,
+        "scipy_seconds": 0.04877090000000095,
+        "torch_seconds": 0.155659,
+        "scipy_iterations": 175,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 33,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-11-06|2023-11-17",
+        "initial_parameters": [
+          0.00071776034647818,
+          0.2,
+          0.0,
+          -0.0026654575585772803,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 1.0886927889272457e-08,
+        "torch_objective": 1.83324758040726e-07,
+        "scipy_seconds": 0.016598399999999458,
+        "torch_seconds": 0.15493679999999976,
+        "scipy_iterations": 45,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 31,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-11-06|2023-12-15",
+        "initial_parameters": [
+          0.0025048346614270703,
+          0.2,
+          0.0,
+          0.0023451488798063172,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 1.8570181745827745e-08,
+        "torch_objective": 1.262637283616641e-07,
+        "scipy_seconds": 0.01578690000000016,
+        "torch_seconds": 0.16127359999999946,
+        "scipy_iterations": 51,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 31,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-11-06|2024-01-19",
+        "initial_parameters": [
+          0.004883315270089269,
+          0.2,
+          0.0,
+          0.006746448892502942,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 6.603260420338857e-08,
+        "torch_objective": 2.4189506575567066e-07,
+        "scipy_seconds": 0.051766900000000504,
+        "torch_seconds": 0.16051109999999724,
+        "scipy_iterations": 126,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 31,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-11-06|2024-03-15",
+        "initial_parameters": [
+          0.008335425202962985,
+          0.2,
+          0.0,
+          -0.004081805657323505,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 3.969036304051091e-08,
+        "torch_objective": 1.371164671581937e-06,
+        "scipy_seconds": 1.035416999999999,
+        "torch_seconds": 0.1649599999999971,
+        "scipy_iterations": 2547,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 37,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-11-07|2023-11-17",
+        "initial_parameters": [
+          0.0006045574222362075,
+          0.2,
+          0.0,
+          0.0009232109064265795,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 2.5089772804703295e-08,
+        "torch_objective": 4.770257646669052e-07,
+        "scipy_seconds": 0.013958200000001142,
+        "torch_seconds": 0.15657090000000196,
+        "scipy_iterations": 28,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 80,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-11-07|2023-12-15",
+        "initial_parameters": [
+          0.002491111081811784,
+          0.2,
+          0.0,
+          -0.0009398917564001985,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 3.7358765421127694e-08,
+        "torch_objective": 1.2489753942190873e-07,
+        "scipy_seconds": 0.012325499999999323,
+        "torch_seconds": 0.16389239999999816,
+        "scipy_iterations": 43,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 31,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-11-07|2024-01-19",
+        "initial_parameters": [
+          0.004650635852363061,
+          0.2,
+          0.0,
+          0.01715666963475333,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 1.1001565258024853e-07,
+        "torch_objective": 3.685555327592738e-07,
+        "scipy_seconds": 0.5459482000000015,
+        "torch_seconds": 0.16341299999999848,
+        "scipy_iterations": 1705,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": null,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-11-07|2024-03-15",
+        "initial_parameters": [
+          0.008225877345692743,
+          0.2,
+          0.0,
+          0.013207461911114125,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 4.440095642366995e-08,
+        "torch_objective": 1.0634020100042108e-06,
+        "scipy_seconds": 0.15167259999999771,
+        "torch_seconds": 0.17356260000000034,
+        "scipy_iterations": 495,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 51,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-11-08|2023-11-17",
+        "initial_parameters": [
+          0.0005655229374683591,
+          0.2,
+          0.0,
+          0.003364875133603293,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 9.412467049903092e-09,
+        "torch_objective": 2.2523830978116166e-07,
+        "scipy_seconds": 0.01842149999999876,
+        "torch_seconds": 0.16388819999999882,
+        "scipy_iterations": 45,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 31,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-11-08|2023-12-15",
+        "initial_parameters": [
+          0.0023732522385888424,
+          0.2,
+          0.0,
+          0.0015323991159149532,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 1.6426207634719964e-08,
+        "torch_objective": 2.0248158705271635e-07,
+        "scipy_seconds": 0.02442010000000039,
+        "torch_seconds": 0.1733753,
+        "scipy_iterations": 70,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 31,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-11-08|2024-01-19",
+        "initial_parameters": [
+          0.004312504242544147,
+          0.2,
+          0.0,
+          0.01282604022529961,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 1.7356676438901167e-08,
+        "torch_objective": 5.654438268720696e-07,
+        "scipy_seconds": 1.0988714000000002,
+        "torch_seconds": 0.16345929999999953,
+        "scipy_iterations": 3000,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 37,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-11-08|2024-03-15",
+        "initial_parameters": [
+          0.007759156801095617,
+          0.2,
+          0.0,
+          0.015668799022700453,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 6.212559241855416e-08,
+        "torch_objective": 7.560746553281206e-07,
+        "scipy_seconds": 0.02648420000000229,
+        "torch_seconds": 0.17319619999999958,
+        "scipy_iterations": 87,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 37,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-11-09|2023-11-17",
+        "initial_parameters": [
+          0.0005072682233726637,
+          0.2,
+          0.0,
+          -0.003948325087548891,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 1.0486736441817954e-08,
+        "torch_objective": 2.596357830952911e-07,
+        "scipy_seconds": 0.015972700000002504,
+        "torch_seconds": 0.16504150000000095,
+        "scipy_iterations": 42,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 31,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-11-09|2023-12-15",
+        "initial_parameters": [
+          0.002398621781574162,
+          0.2,
+          0.0,
+          0.001115607951748033,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 5.937745570059046e-09,
+        "torch_objective": 1.3542783960929228e-07,
+        "scipy_seconds": 0.019297000000001674,
+        "torch_seconds": 0.1726647000000021,
+        "scipy_iterations": 55,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 31,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-11-09|2024-01-19",
+        "initial_parameters": [
+          0.004983963587939855,
+          0.2,
+          0.0,
+          0.04588467355862301,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 1.745750513829114e-08,
+        "torch_objective": 3.046657184313517e-07,
+        "scipy_seconds": 0.0764251999999992,
+        "torch_seconds": 0.1629706000000013,
+        "scipy_iterations": 245,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 38,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-11-09|2024-03-15",
+        "initial_parameters": [
+          0.00863558189220731,
+          0.2,
+          0.0,
+          0.04191217085301643,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 1.8793965191158475e-09,
+        "torch_objective": 4.841284635404008e-07,
+        "scipy_seconds": 0.04986719999999778,
+        "torch_seconds": 0.17061749999999876,
+        "scipy_iterations": 145,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 39,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-11-10|2023-11-17",
+        "initial_parameters": [
+          0.0004218772005393982,
+          0.2,
+          0.0,
+          0.003412946074675413,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 4.550681948172963e-09,
+        "torch_objective": 2.9794708211738907e-07,
+        "scipy_seconds": 0.016465800000002417,
+        "torch_seconds": 0.1607208,
+        "scipy_iterations": 38,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 31,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-11-10|2023-12-15",
+        "initial_parameters": [
+          0.0024071329953548482,
+          0.2,
+          0.0,
+          0.001601466462880591,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 4.688148907194564e-09,
+        "torch_objective": 1.1222735452065535e-07,
+        "scipy_seconds": 0.024296300000003157,
+        "torch_seconds": 0.1601479999999995,
+        "scipy_iterations": 61,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 31,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-11-10|2024-01-19",
+        "initial_parameters": [
+          0.004983963426143802,
+          0.2,
+          0.0,
+          0.04002729173009774,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 1.0312026103693181e-09,
+        "torch_objective": 2.085327821532701e-07,
+        "scipy_seconds": 0.03063489999999902,
+        "torch_seconds": 0.16181249999999991,
+        "scipy_iterations": 97,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 31,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-11-10|2024-03-15",
+        "initial_parameters": [
+          0.007881157948218476,
+          0.2,
+          0.0,
+          -0.004778667823003803,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 1.625170480113687e-09,
+        "torch_objective": 8.581319548284227e-07,
+        "scipy_seconds": 0.03335399999999922,
+        "torch_seconds": 0.157850100000001,
+        "scipy_iterations": 101,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 25,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-11-10|2024-06-21",
+        "initial_parameters": [
+          0.013881402481870529,
+          0.2,
+          0.0,
+          0.01567652058726178,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 1.7321572002656899e-07,
+        "torch_objective": 4.189999742720829e-07,
+        "scipy_seconds": 1.0462360000000004,
+        "torch_seconds": 0.1570500000000017,
+        "scipy_iterations": 3000,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": null,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-11-10|2024-09-20",
+        "initial_parameters": [
+          0.01903541138922106,
+          0.2,
+          0.0,
+          0.009189453341606767,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 1.1627268410982558e-06,
+        "torch_objective": 1.3036262771493057e-06,
+        "scipy_seconds": 0.02613449999999773,
+        "torch_seconds": 0.15455880000000022,
+        "scipy_iterations": 86,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": null,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-11-13|2023-12-15",
+        "initial_parameters": [
+          0.0021555751625279423,
+          0.2,
+          0.0,
+          -0.003221843482812573,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 1.518914934852131e-08,
+        "torch_objective": 5.05600645794857e-08,
+        "scipy_seconds": 0.013991199999999537,
+        "torch_seconds": 0.15829259999999934,
+        "scipy_iterations": 40,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 31,
+        "torch_updates_to_target": 229
+      },
+      {
+        "group": "2023-11-13|2024-01-19",
+        "initial_parameters": [
+          0.004696335261818006,
+          0.2,
+          0.0,
+          0.042217335937919445,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 1.0697924849602577e-08,
+        "torch_objective": 1.5904878125638788e-07,
+        "scipy_seconds": 0.1174552999999996,
+        "torch_seconds": 0.15846810000000033,
+        "scipy_iterations": 345,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 31,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-11-14|2023-12-15",
+        "initial_parameters": [
+          0.0021038747174073336,
+          0.2,
+          0.0,
+          -0.0038958754679341554,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 4.405299992984877e-09,
+        "torch_objective": 3.7884916537223035e-08,
+        "scipy_seconds": 0.012496200000001068,
+        "torch_seconds": 0.1611785999999995,
+        "scipy_iterations": 41,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 31,
+        "torch_updates_to_target": 226
+      },
+      {
+        "group": "2023-11-14|2024-03-15",
+        "initial_parameters": [
+          0.007234874916886552,
+          0.2,
+          0.0,
+          -0.0036491274969035897,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 2.604980938787481e-10,
+        "torch_objective": 4.854647386309807e-07,
+        "scipy_seconds": 0.009423300000001689,
+        "torch_seconds": 0.15955969999999908,
+        "scipy_iterations": 31,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 46,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-11-15|2023-12-15",
+        "initial_parameters": [
+          0.0020115102468767176,
+          0.2,
+          0.0,
+          0.0030570253205245155,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 6.842591813873836e-09,
+        "torch_objective": 5.5016887046122065e-08,
+        "scipy_seconds": 0.016485599999999323,
+        "torch_seconds": 0.15769870000000097,
+        "scipy_iterations": 53,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 31,
+        "torch_updates_to_target": 241
+      },
+      {
+        "group": "2023-11-15|2024-01-19",
+        "initial_parameters": [
+          0.003972929345836681,
+          0.2,
+          0.0,
+          -0.006204418456788854,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 6.031546206363046e-09,
+        "torch_objective": 6.505188707706111e-07,
+        "scipy_seconds": 0.01155679999999748,
+        "torch_seconds": 0.16077120000000278,
+        "scipy_iterations": 37,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 25,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-11-15|2024-03-15",
+        "initial_parameters": [
+          0.0073864963411234864,
+          0.2,
+          0.0,
+          0.01719557946359918,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 1.4517733587044301e-09,
+        "torch_objective": 5.520745958165207e-07,
+        "scipy_seconds": 0.009334800000001309,
+        "torch_seconds": 0.1575314999999975,
+        "scipy_iterations": 30,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 33,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-11-15|2024-06-21",
+        "initial_parameters": [
+          0.012763466057401297,
+          0.2,
+          0.0,
+          0.02359075487748225,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 1.4196416648876642e-07,
+        "torch_objective": 2.0304855752328876e-07,
+        "scipy_seconds": 0.05900400000000161,
+        "torch_seconds": 0.15436929999999904,
+        "scipy_iterations": 155,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": null,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-11-16|2023-12-15",
+        "initial_parameters": [
+          0.0018076571768383962,
+          0.2,
+          0.0,
+          -0.0010477952909136211,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 2.738057924688282e-08,
+        "torch_objective": 4.4556294653830264e-08,
+        "scipy_seconds": 0.024115399999999454,
+        "torch_seconds": 0.15645549999999986,
+        "scipy_iterations": 61,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 31,
+        "torch_updates_to_target": 236
+      },
+      {
+        "group": "2023-11-16|2024-01-19",
+        "initial_parameters": [
+          0.0035283274983254433,
+          0.2,
+          0.0,
+          0.024174047548628293,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 3.586498029895243e-08,
+        "torch_objective": 2.165957226907267e-07,
+        "scipy_seconds": 0.017776399999998915,
+        "torch_seconds": 0.15758719999999826,
+        "scipy_iterations": 62,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 31,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-11-16|2024-03-15",
+        "initial_parameters": [
+          0.007362720998516951,
+          0.2,
+          0.0,
+          0.026971205737102787,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 1.8230364447128e-10,
+        "torch_objective": 4.832816102862125e-07,
+        "scipy_seconds": 0.08626139999999793,
+        "torch_seconds": 0.176978799999997,
+        "scipy_iterations": 186,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 37,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-11-17|2023-12-15",
+        "initial_parameters": [
+          0.001596723251162417,
+          0.2,
+          0.0,
+          0.00022504513093229766,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 3.480508082557025e-08,
+        "torch_objective": 5.8661957069716664e-08,
+        "scipy_seconds": 0.007557800000000725,
+        "torch_seconds": 0.16113299999999953,
+        "scipy_iterations": 21,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 31,
+        "torch_updates_to_target": 255
+      },
+      {
+        "group": "2023-11-17|2024-01-19",
+        "initial_parameters": [
+          0.0036183103859785183,
+          0.2,
+          0.0,
+          -0.002145877700444941,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 8.240892542679531e-09,
+        "torch_objective": 2.824395721745532e-07,
+        "scipy_seconds": 0.026803599999997374,
+        "torch_seconds": 0.15473300000000023,
+        "scipy_iterations": 71,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 31,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-11-17|2024-03-15",
+        "initial_parameters": [
+          0.006860891259108659,
+          0.2,
+          0.0,
+          0.014531365465694156,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 1.5143747906886004e-08,
+        "torch_objective": 4.2461181237740675e-07,
+        "scipy_seconds": 0.041431199999998114,
+        "torch_seconds": 0.15831349999999844,
+        "scipy_iterations": 139,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 37,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-11-17|2024-09-20",
+        "initial_parameters": [
+          0.013443104860939012,
+          0.2,
+          0.0,
+          0.028147272581071057,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 4.620500253460436e-06,
+        "torch_objective": 6.488335657195421e-06,
+        "scipy_seconds": 0.016222400000000192,
+        "torch_seconds": 0.15886700000000076,
+        "scipy_iterations": 59,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": null,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-11-20|2023-12-15",
+        "initial_parameters": [
+          0.001389360310911493,
+          0.2,
+          0.0,
+          -0.0018775421933162517,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 1.0367272559537908e-08,
+        "torch_objective": 5.3543878664186195e-08,
+        "scipy_seconds": 0.015021399999998408,
+        "torch_seconds": 0.15948820000000197,
+        "scipy_iterations": 40,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 31,
+        "torch_updates_to_target": 258
+      },
+      {
+        "group": "2023-11-20|2024-01-19",
+        "initial_parameters": [
+          0.0032265299308364293,
+          0.2,
+          0.0,
+          0.0027546445508375376,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 2.553207112592139e-09,
+        "torch_objective": 1.70791125242431e-07,
+        "scipy_seconds": 0.019104600000002137,
+        "torch_seconds": 0.16290229999999895,
+        "scipy_iterations": 54,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 31,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-11-20|2024-03-15",
+        "initial_parameters": [
+          0.006707595161084079,
+          0.2,
+          0.0,
+          0.012430770413942244,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 3.7026318897992625e-08,
+        "torch_objective": 5.521512207451451e-07,
+        "scipy_seconds": 0.2188161000000015,
+        "torch_seconds": 0.15691759999999988,
+        "scipy_iterations": 580,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 43,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-11-20|2024-06-21",
+        "initial_parameters": [
+          0.012126201397436396,
+          0.2,
+          0.0,
+          0.005491467701118097,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 1.5653222328014419e-06,
+        "torch_objective": 1.7923254063134664e-06,
+        "scipy_seconds": 0.11307760000000044,
+        "torch_seconds": 0.15707940000000065,
+        "scipy_iterations": 395,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": null,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-11-21|2023-12-15",
+        "initial_parameters": [
+          0.0012889805271446304,
+          0.2,
+          0.0,
+          -0.003134461269825973,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 9.21997496339475e-09,
+        "torch_objective": 6.767718474520734e-08,
+        "scipy_seconds": 0.0214193999999992,
+        "torch_seconds": 0.1588718,
+        "scipy_iterations": 55,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 31,
+        "torch_updates_to_target": 274
+      },
+      {
+        "group": "2023-11-21|2024-01-19",
+        "initial_parameters": [
+          0.0031401217301476776,
+          0.2,
+          0.0,
+          0.0015010857412104154,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 6.364385704089827e-08,
+        "torch_objective": 1.9946067197906814e-07,
+        "scipy_seconds": 0.01648739999999904,
+        "torch_seconds": 0.1587499000000001,
+        "scipy_iterations": 42,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 31,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-11-21|2024-03-15",
+        "initial_parameters": [
+          0.006532205066493431,
+          0.2,
+          0.0,
+          -0.0025253065090590026,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 1.670385498861645e-08,
+        "torch_objective": 7.251155693666078e-07,
+        "scipy_seconds": 0.036164700000000494,
+        "torch_seconds": 0.1570407999999972,
+        "scipy_iterations": 101,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 25,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-11-21|2024-06-21",
+        "initial_parameters": [
+          0.012580136126884266,
+          0.2,
+          0.0,
+          -0.00946798956090698,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 5.719751133890312e-08,
+        "torch_objective": 3.27202542393934e-07,
+        "scipy_seconds": 0.10079950000000082,
+        "torch_seconds": 0.1576777999999983,
+        "scipy_iterations": 334,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 1070,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-11-22|2023-12-15",
+        "initial_parameters": [
+          0.0013001315626072034,
+          0.2,
+          0.0,
+          0.00022313003366036113,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 1.993392625798147e-08,
+        "torch_objective": 7.742843877167616e-08,
+        "scipy_seconds": 0.024455900000003084,
+        "torch_seconds": 0.156728600000001,
+        "scipy_iterations": 62,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 31,
+        "torch_updates_to_target": 275
+      },
+      {
+        "group": "2023-11-22|2024-01-19",
+        "initial_parameters": [
+          0.0032563988405527444,
+          0.2,
+          0.0,
+          0.01875201328976557,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 5.0811729982559135e-09,
+        "torch_objective": 1.526026807141534e-07,
+        "scipy_seconds": 0.0321366999999988,
+        "torch_seconds": 0.1587779999999981,
+        "scipy_iterations": 95,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 31,
+        "torch_updates_to_target": null
+      },
+      {
+        "group": "2023-11-22|2024-03-15",
+        "initial_parameters": [
+          0.006855345890093663,
+          0.2,
+          0.0,
+          0.02152911130322935,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 1.068319289887413e-08,
+        "torch_objective": 4.2462480109861644e-07,
+        "scipy_seconds": 0.44828640000000064,
+        "torch_seconds": 0.15556339999999835,
+        "scipy_iterations": 1465,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": 37,
+        "torch_updates_to_target": null
       },
       {
         "group": "2025-11-24|2026-02-20",
-        "scipy_objective": 2.0081311157677323e-07,
-        "torch_objective": 2.008132895525705e-07,
-        "scipy_seconds": 0.004015667000203393,
-        "torch_seconds": 0.03550845800054958,
-        "scipy_iterations": 1,
-        "torch_epochs": 300
+        "initial_parameters": [
+          0.006865073074435415,
+          0.2,
+          0.0,
+          0.02979135693914597,
+          0.1
+        ],
+        "target_mse": 1e-07,
+        "scipy_objective": 2.0041153159921755e-07,
+        "torch_objective": 2.639794161041209e-07,
+        "scipy_seconds": 0.010664500000000743,
+        "torch_seconds": 0.15560139999999834,
+        "scipy_iterations": 34,
+        "torch_epochs": 300,
+        "scipy_objective_evaluations_to_target": null,
+        "torch_updates_to_target": null
       }
     ],
     "neural_ablations": {
       "lambda_b=0,lambda_t=0": {
-        "fit_seconds": 0.24614733300040825,
+        "fit_seconds": 0.8888788000000005,
         "final_loss": {
-          "loss": 1.4225394806999248e-05,
-          "price_loss": 1.4225394806999248e-05,
+          "loss": 138.427490234375,
+          "price_loss": 138.427490234375,
           "butterfly_penalty": 0.0,
-          "calendar_penalty": 0.0
+          "calendar_penalty": 1.0108009007581131e-07
         },
-        "median_relative_price_error": 0.0017317081801593304,
-        "p95_relative_price_error": 0.00926443375647068,
+        "median_relative_price_error": 0.09083032608032227,
+        "p95_relative_price_error": 0.5751955509185791,
         "arbitrage": {
-          "butterfly_min_g": 0.6299325823783875,
+          "butterfly_min_g": 0.01812504045665264,
           "butterfly_violations": 0,
-          "calendar_violations": 0
+          "calendar_violations": 13
         }
       },
-      "lambda_b=1,lambda_t=0": {
-        "fit_seconds": 0.23169312500067463,
+      "lambda_b=1e+08,lambda_t=0": {
+        "fit_seconds": 0.8425113999999994,
         "final_loss": {
-          "loss": 1.4225394806999248e-05,
-          "price_loss": 1.4225394806999248e-05,
+          "loss": 138.427490234375,
+          "price_loss": 138.427490234375,
           "butterfly_penalty": 0.0,
-          "calendar_penalty": 0.0
+          "calendar_penalty": 1.0108009007581131e-07
         },
-        "median_relative_price_error": 0.0017317081801593304,
-        "p95_relative_price_error": 0.00926443375647068,
+        "median_relative_price_error": 0.09083032608032227,
+        "p95_relative_price_error": 0.5751955509185791,
         "arbitrage": {
-          "butterfly_min_g": 0.6299325823783875,
+          "butterfly_min_g": 0.01812504045665264,
           "butterfly_violations": 0,
-          "calendar_violations": 0
+          "calendar_violations": 13
         }
       },
-      "lambda_b=0,lambda_t=1": {
-        "fit_seconds": 0.22675700000036159,
+      "lambda_b=0,lambda_t=1e+08": {
+        "fit_seconds": 0.8640915999999983,
         "final_loss": {
-          "loss": 1.4225394806999248e-05,
-          "price_loss": 1.4225394806999248e-05,
+          "loss": 139.9124755859375,
+          "price_loss": 139.9124755859375,
           "butterfly_penalty": 0.0,
           "calendar_penalty": 0.0
         },
-        "median_relative_price_error": 0.0017317081801593304,
-        "p95_relative_price_error": 0.00926443375647068,
+        "median_relative_price_error": 0.0885450690984726,
+        "p95_relative_price_error": 0.5838783085346222,
         "arbitrage": {
-          "butterfly_min_g": 0.6299325823783875,
+          "butterfly_min_g": 0.029031921178102493,
           "butterfly_violations": 0,
-          "calendar_violations": 0
+          "calendar_violations": 2
         }
       },
-      "lambda_b=1,lambda_t=1": {
-        "fit_seconds": 0.23264633400140156,
+      "lambda_b=1e+08,lambda_t=1e+08": {
+        "fit_seconds": 0.8559720000000013,
         "final_loss": {
-          "loss": 1.4225394806999248e-05,
-          "price_loss": 1.4225394806999248e-05,
+          "loss": 139.9124755859375,
+          "price_loss": 139.9124755859375,
           "butterfly_penalty": 0.0,
           "calendar_penalty": 0.0
         },
-        "median_relative_price_error": 0.0017317081801593304,
-        "p95_relative_price_error": 0.00926443375647068,
+        "median_relative_price_error": 0.0885450690984726,
+        "p95_relative_price_error": 0.5838783085346222,
         "arbitrage": {
-          "butterfly_min_g": 0.6299325823783875,
+          "butterfly_min_g": 0.029031921178102493,
           "butterfly_violations": 0,
-          "calendar_violations": 0
+          "calendar_violations": 2
         }
       }
     },
     "dropout_30_percent": {
-      "train_rows": 156,
-      "heldout_rows": 68,
-      "neural_median_relative_error": 0.0020388979464769363,
-      "neural_p95_relative_error": 0.009408580139279366,
-      "svi_median_relative_error": 0.0006681375998242732,
-      "svi_p95_relative_error": 0.0018226143479751736
+      "train_rows": 1030,
+      "heldout_rows": 441,
+      "common_evaluation_rows": 349,
+      "neural_median_relative_error": 0.0924515500664711,
+      "neural_p95_relative_error": 0.7182758212089538,
+      "svi_median_relative_error": 0.050801223345404996,
+      "svi_p95_relative_error": 0.7439009269756928
     }
   },
-  "fit_seconds": 2.4760434580002766,
+  "fit_seconds": 12.897920599999999,
   "history": {
-    "torch_svi_groups": 12,
+    "torch_svi_groups": 86,
     "neural_ablations": 4
   }
 }
