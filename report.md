@@ -97,6 +97,8 @@ a=\operatorname{softplus}(u_a),\quad b=\operatorname{softplus}(u_b),\quad
 
 Both optimizers start from the same parameters and are compared against the same total-variance MSE target of 1e-7. SciPy uses bounded least squares and Torch runs 300 Adam updates. SciPy reached the target in 72 of 86 groups and Torch in 14 of 86. The median final objective is 1.52e-08 for SciPy and 2.63e-07 for Torch. Median wall times are 0.021 s and 0.160 s respectively. The metrics record SciPy function evaluations and Adam updates separately, as the two counts measure different operations. The classical pipeline's constrained SLSQP stage is outside this optimizer comparison.
 
+The differentiable SVI fits have 1146 butterfly and 454 calendar grid violations. The metrics retain their locations by date, maturity and log moneyness. This check is distinct from the SLSQP-constrained classical fits.
+
 ### 5.2 Neural surface
 
 The neural surface is an MLP with two hidden tanh layers and a positive softplus volatility output. Inputs are `(k,T)`. The loss is option-price squared error plus arbitrage penalties:
@@ -107,7 +109,7 @@ The neural surface is an MLP with two hidden tanh layers and a positive softplus
  +\lambda_T\operatorname{mean}[\max(0,-\partial_Tw)^2].
 \]
 
-The four runs switch each penalty independently between 0 and 1e8. The nonzero weights put variance diagnostics on a usable scale alongside squared index-price errors.
+The metrics include the neural violation locations in log moneyness and maturity. The four runs switch each penalty independently between 0 and 1e8. The nonzero weights put variance diagnostics on a usable scale alongside squared index-price errors.
 
 | Penalty configuration | Median in-sample relative error | Butterfly violations | Calendar violations |
 |---|---:|---:|---:|

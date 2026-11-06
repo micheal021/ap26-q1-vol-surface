@@ -17,6 +17,7 @@ from common import (
     filter_quotes,
     fit_svi,
     black_scholes_forward_price,
+    butterfly_g,
     scipy_svi,
     svi_initial,
     load_market_data,
@@ -162,7 +163,15 @@ def neural_arbitrage_diagnostics(model, tau_low: float, tau_high: float) -> dict
     time_slope = derivatives[:, 1]
     variance = torch.clamp(total_variance, min=1e-6)
     butterfly = (1 - grid[:, 0] * slope / (2 * variance)) ** 2 - slope**2 / 4 * (1 / variance + 0.25)
-    return {"butterfly_min_g": float(torch.min(butterfly.detach())), "butterfly_violations": int(torch.sum(butterfly < -1e-8)), "calendar_violations": int(torch.sum(time_slope < -1e-8))}
+    bad_butterfly = butterfly.detach() < -1e-8
+    bad_calendar = time_slope < -1e-8
+    return {
+        "butterfly_min_g": float(torch.min(butterfly.detach())),
+        "butterfly_violations": int(bad_butterfly.sum()),
+        "calendar_violations": int(bad_calendar.sum()),
+        "butterfly_locations_k_tau": grid.detach()[bad_butterfly].tolist(),
+        "calendar_locations_k_tau": grid.detach()[bad_calendar].tolist(),
+    }
 
 
 def svi_holdout_errors(train_frame: pd.DataFrame, test_frame: pd.DataFrame) -> pd.Series:
@@ -200,6 +209,7 @@ def main() -> None:
     frame, divergence_count = add_implied_volatility(filtered)
     torch_fits = {}
     convergence = []
+    diagnostic_grid = np.linspace(-0.4, 0.4, 81)
     for key, group in frame.groupby(["date", "expiry"], sort=True):
         collapsed = group.groupby("log_moneyness", as_index=False).agg(total_variance=("total_variance", "mean"))
         if len(collapsed) < 5:
@@ -213,7 +223,13 @@ def main() -> None:
         scipy_seconds = time.perf_counter() - started
         torch_fit = differentiable_svi(k, total_variance, initial, args.svi_epochs, args.seed)
         target = 1e-7
-        torch_fits[key_text] = torch_fit
+        torch_fits[key_text] = {
+            "date": key[0].date().isoformat(),
+            "expiry": key[1].date().isoformat(),
+            "tau": float(group["tau"].iloc[0]),
+            "parameters": torch_fit["parameters"],
+            "butterfly_locations_k": diagnostic_grid[butterfly_g(diagnostic_grid, torch_fit["parameters"]) < -1e-8].tolist(),
+        }
         convergence.append({
             "group": key_text,
             "initial_parameters": initial.tolist(),
@@ -227,6 +243,18 @@ def main() -> None:
             "scipy_objective_evaluations_to_target": next((i for i, value in enumerate(scipy_history, 1) if value <= target), None),
             "torch_updates_to_target": next((i for i, value in enumerate(torch_fit["history"]) if value <= target), None),
         })
+    torch_calendar = []
+    dates = sorted({fit["date"] for fit in torch_fits.values()})
+    for day in dates:
+        fits = sorted((fit for fit in torch_fits.values() if fit["date"] == day), key=lambda fit: fit["tau"])
+        for near, far in zip(fits, fits[1:]):
+            difference = svi_value(diagnostic_grid, far["parameters"]) - svi_value(diagnostic_grid, near["parameters"])
+            violations = difference < -1e-8
+            if np.any(violations):
+                torch_calendar.append({
+                    "date": day, "near_expiry": near["expiry"], "far_expiry": far["expiry"],
+                    "log_moneyness": diagnostic_grid[violations].tolist(),
+                })
     penalty_weight = 1e8
     penalty_grid = [(0.0, 0.0), (penalty_weight, 0.0), (0.0, penalty_weight), (penalty_weight, penalty_weight)]
     ablations = {}
@@ -249,6 +277,7 @@ def main() -> None:
         "iv_divergence_count": divergence_count,
         "torch_svi_groups": len(torch_fits),
         "convergence": convergence,
+        "torch_svi_diagnostics": {"groups": torch_fits, "calendar_violations": torch_calendar},
         "neural_ablations": ablations,
         "dropout_30_percent": {
             "train_rows": len(train_frame),
