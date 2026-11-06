@@ -2,15 +2,15 @@
 
 ## 1. Executive summary
 
-This project estimates China CSI 300 option implied-volatility surfaces using public CFFEX historical contract data. Approach 1 performs quote filtering, Black–Scholes inversion, put–call parity diagnostics, constrained SVI calibration, repricing, and no-arbitrage checks. Approach 2 compares differentiable PyTorch SVI calibration with SciPy and trains a price-space neural surface with butterfly/calendar penalties. The liquid quote pipeline retains 225 quotes, successfully inverts 224, fits 12 SVI groups, obtains zero butterfly-grid violations, and has 1.67% median liquid-strike repricing error. Under a 30% quote-drop experiment, SVI obtains 0.067% median relative price error on held-out quotes and the neural surface obtains 0.204%.
+This study uses CFFEX CSI 300 index options. Approach 1 uses Brent implied-volatility inversion, SVI calibration, parity checks, repricing and arbitrage diagnostics. Approach 2 compares SciPy and Torch SVI and fits a neural surface in option-price space. The expanded snapshot produces 86 SVI fits, 0 butterfly grid violations and 3.08% median group repricing error. The classical repricing error exceeds the assignment's indicative 2% benchmark.
 
 ## 2. Data and provenance
 
-The data pipeline uses the assignment-approved `akshare` interfaces: `option_cffex_hs300_spot_sina` and `option_cffex_hs300_daily_sina` for contract strikes and daily OHLCV, `stock_zh_index_daily(symbol="sh000300")` for the CSI 300 index, and `macro_china_shibor_all` for the historical 3M SHIBOR rate. The snapshot contains nine expiry months, 1,134 raw call/put quote rows, 177 observed dates, and a date range from 2023-03-20 to 2026-01-13. A shared October 2023 block contains four expiries on five dates, enabling calendar diagnostics.
+The snapshot contains 5,898 quote rows, 12 expiries and 178 dates from 2023-03-20 to 2026-01-13. The one-month block starts on 2023-10-23 and ends before 2023-11-23. It contains 23 trading days and 5 common expiries with matched calls and puts on every day (2023-12-15, 2024-01-19, 2024-03-15, 2024-06-21, 2024-09-20). The exchange's historical daily XML supplies closes, volumes and expiration dates for the month. The original Sina sample supplies the additional dates outside the block. The CSI 300 close comes from the Sina index snapshot.
 
-For every selected contract, the fetcher keeps the first five trading dates within a 31-calendar-day window and 13 evenly spaced strikes. It also keeps a common 2023-10-23 through 2023-10-27 block for four overlapping expiries when the contract traded on those dates. Raw responses are cached in ignored `data/raw/`; clean snapshots and SHA-256 hashes are committed in `data/clean/metadata.json`.
+The committed curve uses 1-, 30-, 91-, 182- and 365-day SHIBOR from the verified Q2 snapshot, with its commit and source checksum recorded in metadata. The latest available curve on or before each option quote is linearly interpolated to the quote's maturity in days, with the nearest tenor held constant outside the curve. SHIBOR rates are used as proxies for continuously compounded zero rates. Clean artifacts, their SHA-256 checksums and the date-by-date chain coverage are recorded in `data/clean/metadata.json`.
 
-The formal liquid-quote rule is volume at least 40 and forward moneyness `0.9 <= K/F <= 1.1`. The rule is declared before calibration and is exposed through CLI parameters. The underlying dividend yield is set to zero because the primary instrument is the CSI 300 index option rather than an ETF; this assumption is a limitation and is not hidden.
+The liquidity screen requires volume of at least 40 and forward moneyness between 0.90 and 1.10. The archived daily data have no synchronized bid and ask prices, so no spread filter is applied. The index dividend yield is assumed to be zero, which can affect parity residuals and fitted implied volatilities.
 
 ## 3. Market definitions
 
@@ -34,7 +34,7 @@ C=D(FN(d_1)-KN(d_2)),
 \qquad P=D(KN(-d_2)-FN(-d_1)).
 \]
 
-Implied volatility is obtained separately for every call and put using bracketed Brent root finding on `[10^-4, 5]`. Five of 225 filtered quotes fail the admissible price bracket and are reported as divergence cases rather than silently removed.
+Implied volatility is obtained separately for every call and put using bracketed Brent root finding on `[10^-4, 5]`. 25 of 1496 filtered quotes have no bracketed IV solution. The failed observations are listed in `results/approach1/market/iv_divergences.csv`.
 
 Put–call parity is evaluated as
 
@@ -67,21 +67,21 @@ Calendar checks compare fitted total variance at the same `k` for increasing exp
 
 | Quantity | Result |
 |---|---:|
-| Filtered quotes | 225 |
-| Successful IV quotes | 224 |
-| SVI groups | 12 |
-| IV divergence cases | 1 |
+| Filtered quotes | 1496 |
+| Successful IV quotes | 1471 |
+| SVI groups | 86 |
+| IV divergence cases | 25 |
+| Matched parity pairs | 454 |
 | Butterfly violations | 0 |
-| Calendar violations | 20 |
-| Negative forward-variance locations | 20 |
-| Median repricing relative error | 1.67% |
-| 95th percentile of group p95 repricing | 39.21% |
+| Calendar violations | 682 |
+| Negative forward-variance locations | 682 |
+| Median of group-median repricing errors | 3.08% |
+| Median of daily maximum repricing errors | 42.91% |
+| 95th percentile of daily maximum repricing errors | 247.11% |
 
-Calendar and forward-variance violations occur on 2023-10-23 and 2023-10-24; they are counted and located in `metrics.json`. No violations are silently dropped. The high group-level p95 is consistent with sparse daily close data and is discussed as a limitation.
+Calendar violations appear on 22 of the 23 dates with more than one fitted expiry. `metrics.json` locates violations by date, adjacent expiries and log moneyness. The term structure uses piecewise linear interpolation in total variance. The midpoint file records the interpolated values, including segments with negative forward variance. Very small option prices can produce large percentage errors. Parity residuals are computed per matched strike and have RMSE 10.02 index points.
 
-![SVI surface](results/approach1/market/svi_surface.html)
-
-![Arbitrage diagnostics](results/approach1/market/arbitrage_diagnostics.html)
+[SVI smile](results/approach1/market/svi_surface.html) · [Arbitrage diagnostics](results/approach1/market/arbitrage_diagnostics.html)
 
 ## 5. Approach 2: differentiable calibration
 
@@ -94,52 +94,55 @@ a=\operatorname{softplus}(u_a),\quad b=\operatorname{softplus}(u_b),\quad
 \rho=0.999\tanh(u_\rho),\quad \eta=\operatorname{softplus}(u_\eta).
 \]
 
-Adam runs for 300 epochs on each of the 12 groups. The mean SciPy objective is `1.97e-08`, while the mean Torch objective is `1.97e-08`; mean wall time is 0.0087 seconds for SciPy and 0.0374 seconds for Torch on this small dataset. This comparison separates optimizer overhead from statistical fit quality.
+Both optimizers start from the same parameters and are compared against the same total-variance MSE target of 1e-7. SciPy uses bounded least squares and Torch runs 300 Adam updates. SciPy reached the target in 72 of 86 groups and Torch in 14 of 86. The median final objective is 1.52e-08 for SciPy and 2.63e-07 for Torch. Median wall times are 0.021 s and 0.160 s respectively. The metrics record SciPy function evaluations and Adam updates separately, as the two counts measure different operations. The classical pipeline's constrained SLSQP stage is outside this optimizer comparison.
 
 ### 5.2 Neural surface
 
-The neural surface is an MLP with two hidden tanh layers and a positive softplus volatility output. Inputs are `(k,T)`. The loss is normalized option-price squared error plus arbitrage penalties:
+The neural surface is an MLP with two hidden tanh layers and a positive softplus volatility output. Inputs are `(k,T)`. The loss is option-price squared error plus arbitrage penalties:
 
 \[
-\mathcal L=\operatorname{MSE}\left(\frac{\hat C-C_{mkt}}{F}\right)
+\mathcal L=\operatorname{MSE}(\hat C-C_{mkt})
  +\lambda_b\operatorname{mean}[\max(0,-g(k))^2]
  +\lambda_T\operatorname{mean}[\max(0,-\partial_Tw)^2].
 \]
 
-The ablation grid is `(lambda_b,lambda_T)` in `{(0,0),(1,0),(0,1),(1,1)}`. All four trained surfaces have zero grid-level butterfly and calendar violations; their median in-sample relative price error is 0.173%. The equality of the ablation results is itself informative: the filtered training region was already smooth enough that the penalties were inactive.
+The four runs switch each penalty independently between 0 and 1e8. The nonzero weights put variance diagnostics on a usable scale alongside squared index-price errors.
+
+| Penalty configuration | Median in-sample relative error | Butterfly violations | Calendar violations |
+|---|---:|---:|---:|
+| lambda_b=0,lambda_t=0 | 9.08% | 0 | 13 |
+| lambda_b=1e+08,lambda_t=0 | 9.08% | 0 | 13 |
+| lambda_b=0,lambda_t=1e+08 | 8.85% | 0 | 2 |
+| lambda_b=1e+08,lambda_t=1e+08 | 8.85% | 0 | 2 |
 
 ### 5.3 Robustness
 
-Thirty percent of liquid quotes are randomly dropped with seed 42. The remaining 156 quotes train the models and 68 independent dropped quotes form the evaluation set.
+Seed 42 holds out 441 of 1471 quotes, leaving 1030 for training. Both models are compared on the same 349 held-out rows for which a local SVI refit has enough distinct training strikes. Absolute errors are divided by the observed option price.
 
 | Model | Median relative error | P95 relative error |
 |---|---:|---:|
-| SVI refit | 0.067% | 0.182% |
-| Neural surface | 0.204% | 0.941% |
+| SVI refit | 5.08% | 74.39% |
+| Neural surface | 9.25% | 71.83% |
 
-The SVI refit is more accurate on this small, structured snapshot, while the neural model provides a smooth differentiable surface and remains competitive under missing quotes.
-
-![Differentiable calibration](results/approach2/differentiable/svi_convergence.html)
-
-![Neural ablation](results/approach2/differentiable/neural_ablation.html)
+[Calibration comparison](results/approach2/differentiable/svi_convergence.html) · [Neural ablation](results/approach2/differentiable/neural_ablation.html)
 
 ## 6. Reproducibility and validation
 
 The environment is Python 3.13 with dependencies pinned in `pyproject.toml` and `uv.lock`. The default seed is 42. The canonical commands are:
 
 ```bash
-uv sync
-python data/fetch.py --seed 42
-python code/approach1_market_pipeline.py --seed 42
-python code/approach2_differentiable.py --seed 42
-python code/compare.py
+uv sync --locked --python 3.13
+uv run --locked python data/fetch.py --seed 42
+uv run --locked python code/approach1_market_pipeline.py --seed 42
+uv run --locked python code/approach2_differentiable.py --seed 42
+uv run --locked python code/compare.py
 ```
 
 Both approaches expose `argparse` CLIs, write the required `metrics.json` schema, use self-contained Plotly HTML, and preserve quote filtering, divergence cases, parity residuals, no-arbitrage counts, convergence information, and dropout results.
 
 ## 7. Limitations
 
-The source supplies daily OHLCV closes rather than synchronized bid/ask mids, so parity residuals and repricing tails reflect stale and asynchronous quotes. Zero dividend yield is a simplifying assumption. The snapshot uses a manageable set of CFFEX contracts rather than every listed ETF chain. The calendar block has only a few overlapping expiry dates after the strict liquidity filter, which is why calendar violations are reported as diagnostics rather than interpreted as a definitive market-arbitrage claim. A production surface would use bid/ask intervals, dividend forecasts, more contracts, and constrained price-space calibration across all maturities.
+Daily closes may be stale and asynchronous. The zero-dividend assumption and SHIBOR proxy also affect the forward and the repricing tail. The raw calendar meets the maturity coverage check, but liquidity filtering can leave too few strikes for individual SVI fits. Violations in the fitted surface are numerical diagnostics under these assumptions. SVI and the neural model should be compared with executable bid/ask data before making market-arbitrage claims.
 
 ## 8. Division of work
 

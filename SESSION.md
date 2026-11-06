@@ -1,4 +1,7 @@
-# Session Export
+# Development Session Record
+
+**Record scope.** This file contains a historical development summary and a factual summary of the local revision. The original full terminal-agent transcript was unavailable for this revision. The summaries below do not reproduce all prompts, assistant replies, or tool calls.
+
 
 
 ## Session metadata
@@ -65,3 +68,11 @@ python code/compare.py
 ## Sensitive information
 
 No credentials, tokens, private keys, or browser authorization data are recorded.
+
+## Local revision, 2026-11-07
+
+The revision was made in a Codex session on the local branch `fix/assignment-compliance`. The local numerical runs used Windows, Python 3.9.12 and the available Anaconda packages. This revision record is a summary.
+
+- Checked the prior snapshot and reused the verified multi-tenor SHIBOR snapshot from Q2 with provenance in `data/clean/metadata.json`.
+- Retrieved CFFEX historical daily XML for the shared calendar block and checked trading dates, matched calls and puts, and common expiries.
+- Updated the comparison between SciPy and Torch SVI and reran both approaches and the comparison against the revised offline data.
